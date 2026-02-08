@@ -48,8 +48,8 @@ jobs:
 
     - name: Verificar deploy
       run: |
-        kubectl get pod -n dev
-        kubectl get services  -n dev      
+        kubectl get pod -n dev       
+        kubectl get services  -n dev  
     - name: Verificar deploy
       run: |
         kubectl get pod -n prod
