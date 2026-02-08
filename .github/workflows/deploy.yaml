@@ -18,7 +18,7 @@ jobs:
         # Creamos la carpeta por si no existe (buena práctica)
         mkdir -p ~/.kube
         # Decodificamos el secreto y lo guardamos directamente en la ruta default
-        echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > ~/.kube/config
+        echo "${{ secrets.KUBE_CONFIG }}" | > ~/.kube/config
         # Verificamos la conexión
         kubectl cluster-info
 
