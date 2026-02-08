@@ -48,6 +48,5 @@ jobs:
 
     - name: Verificar deploy
       run: |
-        export KUBECONFIG=$PWD/kubeconfig
         kubectl get pod
         kubectl get services        
