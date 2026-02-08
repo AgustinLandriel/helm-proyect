@@ -15,9 +15,12 @@ jobs:
 
     - name: Configurar kubectl
       run: |
-            curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-            chmod +x kubectl
-            sudo mv kubectl /usr/local/bin/      
+        # Creamos la carpeta por si no existe (buena práctica)
+        mkdir -p ~/.kube
+        # Decodificamos el secreto y lo guardamos directamente en la ruta default
+        echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > ~/.kube/config
+        # Verificamos la conexión
+        kubectl cluster-info
 
     - name: Instalar Helm
       run: |
