@@ -50,3 +50,7 @@ jobs:
       run: |
         kubectl get pod -n dev
         kubectl get services  -n dev      
+    - name: Verificar deploy
+      run: |
+        kubectl get pod -n prod
+        kubectl get services  -n prod              
