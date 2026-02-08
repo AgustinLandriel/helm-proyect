@@ -1,15 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "mi-app.fullname" . }}
-  labels:
-    {{- include "mi-app.labels" . | nindent 4 }}
+  name: {{ .Release.Name }}-service
 spec:
   type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
   selector:
-    {{- include "mi-app.selectorLabels" . | nindent 4 }}
+    app: mi-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: {{ .Values.service.nodePort }}
