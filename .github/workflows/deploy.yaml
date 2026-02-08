@@ -2,7 +2,7 @@ name: Deploy to Kubernetes
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop]
   workflow_dispatch:
 
 jobs:
@@ -48,5 +48,9 @@ jobs:
 
     - name: Verificar deploy
       run: |
-        kubectl get pod
-        kubectl get services        
+        kubectl get pod -n dev
+        kubectl get services  -n dev      
+    - name: Verificar deploy
+      run: |
+        kubectl get pod -n prod
+        kubectl get services  -n prod              
